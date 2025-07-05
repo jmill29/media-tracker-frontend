@@ -29,14 +29,17 @@ public class HttpRequestUtil {
     }
 
     public static HttpResponse<String> sendPost(String url, String jsonBody, String username, String password) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Authorization", getBasicAuthHeader(username, password))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
-                .build();
+        boolean includeAuthHeader = username != null && !username.isBlank()
+                && password != null && !password.isBlank();
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
+                        .uri(URI.create(url))
+                        .header("Content-Type", "application/json")
+                        .POST(HttpRequest.BodyPublishers.ofString(jsonBody));
+        if (includeAuthHeader) {
+            builder.header("Authorization", getBasicAuthHeader(username, password));
+        }
 
-        return client.send(request, HttpResponse.BodyHandlers.ofString());
+        return client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
     }
 
     public static HttpResponse<String> sendPut(String url, String jsonBody, String username, String password) throws Exception {
