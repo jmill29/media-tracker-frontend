@@ -1,7 +1,10 @@
 package com.jmill29.tvtrackerfrontend.ui;
 
 import com.jmill29.tvtrackerfrontend.dto.UserRequest;
+import com.jmill29.tvtrackerfrontend.service.AuthService;
+import com.jmill29.tvtrackerfrontend.service.ShowService;
 import com.jmill29.tvtrackerfrontend.service.UserService;
+import com.jmill29.tvtrackerfrontend.util.HttpRequestUtil;
 
 import java.util.Scanner;
 
@@ -18,33 +21,39 @@ public class Menu {
     public void displayMenu() {
         String choice;
         int exitIndex;
-        boolean loginInfoNull = false;
 
         do {
             System.out.println("==== TV Tracker CLI ====");
             int i = 1;
-            loginInfoNull = (loggedInPassword == null || loggedInPassword.isBlank()) || (loggedInPassword == null || loggedInPassword.isBlank());
-            if (loginInfoNull) {
+            boolean loginInfoNotNull = HttpRequestUtil.loginInfoNotNull(loggedInUsername, loggedInPassword);
+            if (!loginInfoNotNull) {
                 System.out.println(i++ + ". Register");
                 System.out.println(i++ + ". Login");
+            } else {
+                System.out.println(i++ + ". View All TV Shows");
             }
             exitIndex = i;
             System.out.println(i++ + ". Exit");
 
             choice = scanner.nextLine().trim();
+            int numChoice = Integer.parseInt(choice);
+            if (numChoice < 1 || numChoice >= i) {
+                System.out.println("\nInvalid input detected, please try again.\n");
+                continue;
+            }
             switch (choice) {
                 case "1":
-                    if (exitIndex == 1) {
-                        continue;
+                    if (loginInfoNotNull) {
+                        ShowService.fetchAndDisplayShows(loggedInUsername, loggedInPassword);
                     } else {
                         handleRegistration();
                     }
                     break;
                 case "2":
-                    if (loginInfoNull) {
-                        handleLogin();
-                    } else {
+                    if (loginInfoNotNull) {
                         continue;
+                    } else {
+                        handleLogin();
                     }
                     break;
             }
@@ -80,12 +89,20 @@ public class Menu {
         System.out.println("\n=== Login ===");
 
         System.out.print("Username: ");
-        loggedInUsername = scanner.nextLine();
+        String username = scanner.nextLine();
 
-        System.out.println("Password: ");
-        loggedInPassword = scanner.nextLine();
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
 
-        System.out.println("\n✅ Login info stored locally. You'll use these credentials for API requests.\n");
+        boolean success = AuthService.login(username, password);
+
+        if (success) {
+            loggedInUsername = username;
+            loggedInPassword = password;
+            System.out.println("\n✅ You are now logged in.\n");
+        } else {
+            System.out.println("\n❌ Login failed. Please check your credentials.\n");
+        }
     }
 
     public String getLoggedInUsername() {
