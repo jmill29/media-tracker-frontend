@@ -18,19 +18,26 @@ public class HttpRequestUtil {
         return "Basic " + Base64.getEncoder().encodeToString(auth.getBytes());
     }
 
-    public static HttpResponse<String> sendGet(String url, String username, String password) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Authorization", getBasicAuthHeader(username, password))
-                .GET()
-                .build();
+    private static boolean loginInfoNull(String username, String password) {
+        return username != null && !username.isBlank()
+                && password != null && !password.isBlank();
+    }
 
-        return client.send(request, HttpResponse.BodyHandlers.ofString());
+    public static HttpResponse<String> sendGet(String url, String username, String password) throws Exception {
+        boolean includeAuthHeader = loginInfoNull(username, password);
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET();
+
+        if (includeAuthHeader) {
+            builder.header("Authorization", getBasicAuthHeader(username, password));
+        }
+
+        return client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
     }
 
     public static HttpResponse<String> sendPost(String url, String jsonBody, String username, String password) throws Exception {
-        boolean includeAuthHeader = username != null && !username.isBlank()
-                && password != null && !password.isBlank();
+        boolean includeAuthHeader = loginInfoNull(username, password);
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                         .uri(URI.create(url))
                         .header("Content-Type", "application/json")
@@ -45,8 +52,8 @@ public class HttpRequestUtil {
     public static HttpResponse<String> sendPut(String url, String jsonBody, String username, String password) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
-                .header("Authorization", getBasicAuthHeader(username, password))
                 .header("Content-Type", "application/json")
+                .header("Authorization", getBasicAuthHeader(username, password))
                 .PUT(HttpRequest.BodyPublishers.ofString(jsonBody))
                 .build();
 
