@@ -48,7 +48,7 @@ public class ShowService {
                     System.out.println("\n" + show.getId() + ".");
                     System.out.printf("🔹 %s (%d)\n", show.getName(), show.getReleaseYear());
                     System.out.println("📄 " + show.getDescription());
-                    System.out.println("🖼️  Image URL: " + show.getImageUrl());
+                    System.out.println("🖼️ Image URL: " + show.getImageUrl());
                     System.out.println("📺 Episodes: " + show.getNumEpisodes());
                 }
                 System.out.println();
