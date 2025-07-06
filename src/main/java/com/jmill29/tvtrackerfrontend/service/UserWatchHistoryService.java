@@ -93,4 +93,30 @@ public class UserWatchHistoryService {
 
         return false;
     }
+
+    public static void deleteFromWatchHistory(int showId, String username, String password) {
+        String deleteUrl = WATCH_HISTORY_URL + "/" + showId;
+
+        try {
+            HttpResponse<String> response = HttpRequestUtil.sendDelete(deleteUrl, username, password);
+
+            if (response.statusCode() == 200) {
+                System.out.println("\n🗑️ Successfully removed show from your watch history.\n");
+            } else if (response.statusCode() == 404) {
+                String responseBody = response.body().toLowerCase();
+
+                if (responseBody.contains("watch history")) {
+                    System.out.println("\n⚠️ This show is not in your watch history.\n");
+                } else if (responseBody.contains("show")) {
+                    System.out.println("\n⚠️ No TV show found with the given ID.\n");
+                } else {
+                    System.out.println("\n⚠️ Resource not found.\n");
+                }
+            } else {
+                System.out.println("\n❌ Failed to delete show. Status code: " + response.statusCode());
+            }
+        } catch (Exception e) {
+            System.out.println("\n❌ An error occurred while deleting from watch history: " + e.getMessage());
+        }
+    }
 }
