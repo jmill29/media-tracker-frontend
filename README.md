@@ -7,7 +7,6 @@ This is a Java-based CLI frontend for my TV Tracker Capstone. It interacts with 
 ## 📸 Demo Screenshot
 
 > 🖼️ **Screenshot of the CLI in action**  
-> *(Replace the path below with your own image)*
 
 ![Demo Screenshot](https://cognixia-capstone-resources.s3.us-east-1.amazonaws.com/demo.png)
 
