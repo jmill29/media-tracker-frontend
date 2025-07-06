@@ -1,6 +1,4 @@
-# TV Tracker Frontend – Cognixia Capstone Project
-
-[![Coverage](https://img.shields.io/badge/Coverage-80%25-brightgreen.svg)](https://github.com/jmill29/tvtrackerfrontend/actions)
+# TV Tracker Frontend – Cognixia Capstone Project [![Coverage](https://img.shields.io/badge/Coverage-80%25-brightgreen.svg)](https://github.com/jmill29/tvtrackerfrontend/actions)
 
 This is a Java-based CLI frontend for my TV Tracker Capstone. It interacts with the backend API (**[tv-show-tracker-api](https://github.com/jmill29/tv-show-tracker-api)**) to register users, authenticate, and manage TV show watch histories.
 
