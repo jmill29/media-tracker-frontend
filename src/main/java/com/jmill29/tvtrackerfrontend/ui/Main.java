@@ -8,14 +8,11 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        // Initialize scanner for user input
-        Scanner scanner = new Scanner(System.in);
-
-        // Instantiate and display the main menu
-        Menu menu = new Menu(scanner);
-        menu.displayMenu();
-
-        // Close the scanner when done
-        scanner.close();
+        // Initialize scanner for user input and ensure it is closed automatically
+        try (Scanner scanner = new Scanner(System.in)) {
+            // Instantiate and display the main menu
+            Menu menu = new Menu(scanner);
+            menu.displayMenu();
+        }
     }
 }
