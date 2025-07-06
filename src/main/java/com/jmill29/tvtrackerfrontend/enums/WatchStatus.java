@@ -1,5 +1,7 @@
 package com.jmill29.tvtrackerfrontend.enums;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Enum representing the watch status of a TV show from the user's perspective.
  * Used to map user selections to consistent values stored or used by the backend.
@@ -7,15 +9,19 @@ package com.jmill29.tvtrackerfrontend.enums;
 public enum WatchStatus {
 
     /** Show has not been watched or added to any list */
+    @SerializedName("Not Watched")
     NOT_WATCHED("Not Watched"),
 
     /** User wants to watch this show */
+    @SerializedName("Want to Watch")
     WANT_TO_WATCH("Want to Watch"),
 
     /** User is currently watching this show */
+    @SerializedName("Currently Watching")
     CURRENTLY_WATCHING("Currently Watching"),
 
     /** User has completed watching this show */
+    @SerializedName("Already Watched")
     ALREADY_WATCHED("Already Watched");
 
     /** Value matching the backend's expected string for each status */
