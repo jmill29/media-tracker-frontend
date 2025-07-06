@@ -8,7 +8,6 @@ import com.jmill29.tvtrackerfrontend.service.UserService;
 import com.jmill29.tvtrackerfrontend.service.UserWatchHistoryService;
 import com.jmill29.tvtrackerfrontend.util.HttpRequestUtil;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -255,11 +254,4 @@ public class Menu {
         System.out.println("\n📺 Thanks for using TV Tracker. See you next time!\n");
     }
 
-    public String getLoggedInUsername() {
-        return loggedInUsername;
-    }
-
-    public String getLoggedInPassword() {
-        return loggedInPassword;
-    }
 }
