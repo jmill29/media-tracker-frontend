@@ -28,8 +28,6 @@ public class AuthService {
             // Consider 200 OK and 404 Not Found as successful logins for our purposes
             if (statusCode == 200 || statusCode == 404) {
                 return true;
-            } else {
-                System.out.println("\n❌ Login failed. Status code: " + statusCode);
             }
         } catch (Exception e) {
             // Catch network or server errors
