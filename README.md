@@ -1,94 +1,67 @@
-# TV Tracker Frontend – Cognixia Capstone Project [![Coverage](https://img.shields.io/badge/Coverage-80%25-brightgreen.svg)](https://github.com/jmill29/tvtrackerfrontend/actions)
+# Media Tracker Frontend – Future Expansion Project [![WIP](https://img.shields.io/badge/status-in_progress-yellow.svg)](https://github.com/jmill29/media-tracker-frontend)
 
-This is a Java-based CLI frontend for my TV Tracker Capstone. It interacts with the backend API (**[tv-show-tracker-api](https://github.com/jmill29/tv-show-tracker-api)**) to register users, authenticate, and manage TV show watch histories.
-
----
-
-## 📸 Demo Screenshot
-
-> 🖼️ **Screenshot of the CLI in action**  
-
-![Demo Screenshot](https://cognixia-capstone-resources.s3.us-east-1.amazonaws.com/demo.png)
+This is the upcoming **React-based frontend** for the Media Tracker project — a full-stack app originally built as part of my Cognixia Capstone. The frontend will interact with a secure Spring Boot REST API to let users track their **TV shows**, **books**, and **music** — managing not just what they consume, but when and how their preferences evolve over time.
 
 ---
 
-## 📌 Project Links
+## 🎯 Vision & Objective
 
-- [**Backend API**](https://github.com/jmill29/tv-show-tracker-api)  
-- [**Kanban Board**](https://github.com/users/jmill29/projects/3)  
-- [**Javadoc HTML**](./docs/index.html)
+To build a modern, responsive, and scalable frontend that integrates with the Media Tracker API and provides users with an intuitive way to:
 
----
-
-## 🛠 Features
-
-- **User Registration** and **Login** (basic auth)
-- **View Shows** retrieved from the API
-- **Manage Watch History**: Add, update, and remove shows
-- **Clean CLI UI** with emojis and prompts
-- **HttpClient + Gson** integration with DTOs
-- **Comprehensive Test Coverage** (80%+ JaCoCo badge included)
-- **Modular code**: `dto`, `service`, `ui`, `util`, `enums`
+- Track media they've consumed or plan to enjoy
+- View detailed watch/listen/read history timelines
+- Log status updates across multiple categories (TV, Books, Music)
+- Register, authenticate, and manage their personal media preferences
 
 ---
 
-## 🔧 Getting Started
+## 🔮 Key Upcoming Features
 
-1. Clone frontend repo:
-   ```bash
-   git clone https://github.com/jmill29/tvtrackerfrontend.git
-   cd tvtrackerfrontend
-   ```
-
-2. Ensure backend is running on `http://localhost:8080`
-
-3. Build and run the CLI:
-   ```bash
-   mvn clean package
-   java -jar target/tvtrackerfrontend-1.0-SNAPSHOT.jar
-   ```
-
-4. Follow prompts to Register, Login, and manage your watch history.
+- 🔐 **JWT-Based Authentication** (replacing Basic Auth & JdbcUserDetailsManager)
+- ⚛️ **React SPA** for a sleek, interactive UI
+- 📊 **Dashboard** view of watch/listen/read activity over time
+- 🖼️ **Dynamic media cards** with cover art, summaries, and status tags
+- 🔄 **Real-time status updates** using optimistic UI
+- 📁 **Modular structure** with React Router, Axios, Context API
+- 🌐 **Cloud Deployment**: 
+  - Backend: AWS ECS or Fargate
+  - Frontend: AWS S3 + CloudFront CDN
 
 ---
 
-## 🚀 CLI Flow Overview
+## 📌 Related Resources
 
-```
-=== TV Tracker CLI ===
-1. View All TV Shows
-2. View Watch History
-3. Add Show to Watch History
-4. Update Watch Status
-5. Delete a Show from Watch History
-6. Logout
-7. Exit
-👉 Enter your choice here:
-```
+- 🧠 **Backend API (Spring Boot)**: [media-tracker-api](https://github.com/jmill29/media-tracker-api)
+- 📋 **GitHub Project Board**: [Kanban](https://github.com/users/jmill29/projects/3)
+- 📖 **ER Diagram**: [View Schema](https://github.com/jmill29/media-tracker-api/blob/main/ERDiagram.png)
 
 ---
 
-## 🔍 Example Usage
+## 🚧 Current Status
 
-- **Register**: enter name, username, password, email  
-- **Login**: enter credentials  
-- **View Shows**: lists all shows with name, year, episodes, image URL  
-- **Add**: select show ID + status (“Not Watched”, etc.)  
-- **Update / Delete**: choose ID and action  
-- Visual feedback via emojis and clear success/error messages
+This frontend is currently in the early planning and scaffolding phase. The Java CLI version, which served as the original frontend for the capstone, has been archived and is being replaced by this React application to support:
 
----
-
-## 🧩 Next Steps
-
-- Add a **browser-based frontend** using React or similar  
-- Deploy both frontend and backend to cloud (Heroku, AWS, etc.)  
-- Improve UI with better formatting or interactive elements
+- A broader set of media types
+- More sophisticated UI/UX
+- Fully token-based secure user flows
 
 ---
 
-## 🙏 Thanks
+## 📸 Planned UI Preview
 
-Huge thanks to Cognixia for the comprehensive training and support—it’s been a fantastic learning journey, and this project reflects my ability to tackle full-stack development, testing, and documentation solo.
+> 🖼️ *Early preview mockups will be added here soon.*  
+Stay tuned for screenshots and demo links as development progresses.
+
+---
+
+## 🧠 Background
+
+The original capstone was built in under 2 weeks, including a full week learning Spring Boot from scratch. Now, with the fundamentals locked in, I’m taking it a step further and building this frontend for production-readiness — and to sharpen my skills in modern web development and cloud deployment.
+
+---
+
+## 🙌 Thank You
+
+Thanks again to Cognixia for laying the foundation. The capstone taught me more than just frameworks — it showed me how to break problems down, learn fast, and ship real solutions under tight deadlines. This repo represents the next stage in that journey.
 
 — Jacob Miller
