@@ -1,4 +1,4 @@
-# Media Tracker Frontend – Future Expansion Project [![WIP](https://img.shields.io/badge/status-in_progress-yellow.svg)](https://github.com/jmill29/media-tracker-frontend)
+# Media Tracker Frontend – Future Expansion Project ![Coverage](https://img.shields.io/badge/Coverage-80%25-brightgreen) [![WIP](https://img.shields.io/badge/status-in_progress-yellow.svg)](https://github.com/jmill29/media-tracker-frontend)
 
 This is the upcoming **React-based frontend** for the Media Tracker project — a full-stack app originally built as part of my Cognixia Capstone. The frontend will interact with a secure Spring Boot REST API to let users track their **TV shows**, **books**, and **music** — managing not just what they consume, but when and how their preferences evolve over time.
 
